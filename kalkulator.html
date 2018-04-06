@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Kalkulator</title>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/sweetalert.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+</head>
+<body>
+	<input type="number" id="bil1"> Bilangan 1 
+	<br>
+	<input type="number" id="bil2"> Bilangan 2 
+	<br>
+	<input type="number" id="hasil" readonly> Hasil 
+	<br>
+	<table>
+		<tbody>
+			<tr>
+				<td><button>7</button></td>
+				<td><button>8</button></td>
+				<td><button>9</button></td>
+				<td><button onclick="operasi('tambah')">+</button></td>
+				<td><button onclick="operasi('kurang')">-</button></td>
+			</tr>
+			<tr>
+				<td><button>4</button></td>
+				<td><button>5</button></td>
+				<td><button>6</button></td>
+				<td><button onclick="operasi('kali')">X</button></td>
+				<td><button onclick="operasi('bagi')">:</button></td>
+			</tr>
+			<tr>
+				<td><button>1</button></td>
+				<td><button>2</button></td>
+				<td><button>3</button></td>
+			</tr>
+		</tbody>
+	</table>
+	<script type="text/javascript">
+		var hasil = $("#hasil");
+		function operasi(operasi) {
+			var bil1 = $("#bil1").val();
+			var bil2 = $("#bil2").val();
+
+			if (bil1 == "" || bil2 == "") {
+				swal("Error !!!", "Masukkan Bilangan Yang Valid !!!", "error");
+			}
+
+			var bil1 = parseInt($("#bil1").val());
+			var bil2 = parseInt($("#bil2").val());
+
+			switch(operasi) {
+			    case "tambah":
+			        hasil.val(bil1 + bil2);
+			        break;
+			    case "kurang":
+			        hasil.val(bil1 - bil2);
+			        break;
+			    case "kali":
+			        hasil.val(bil1 * bil2);
+			        break;
+			    case "bagi":
+			        hasil.val(bil1 / bil2);
+			        break;
+			    default:
+			        swal("Error !!!", "Operasi Tidak Valid", "error");
+			        return false;
+			}			
+		}
+	</script>
+</body>
+</html>
